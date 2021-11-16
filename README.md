@@ -3,8 +3,8 @@
 Simple hybrid implementation of triples DES  where keys are encrypted with RSA
 
 Dependencies:
-- Cryptodome
+  Cryptodome
 
 Usage :
-Run with python
-Folow steps shown in terminal
+- Run with python
+- Folow steps shown in terminal
