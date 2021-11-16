@@ -2,8 +2,6 @@ import random
 import math
 
 import tables
-import rsa
-
 
 # Fonction utiles
 
