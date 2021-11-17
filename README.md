@@ -6,5 +6,6 @@ Dependencies:
   Cryptodome
 
 Usage :
-- Run with python
+- Run pythonX messagerie.py
 - Folow steps shown in terminal
+- Entrer 
