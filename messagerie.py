@@ -1,7 +1,6 @@
 import rsa
 import tdes
 
-
 def enc_tdes_keys(keys, pub_key):
     enc_keys = []
     for key in keys:
@@ -9,14 +8,12 @@ def enc_tdes_keys(keys, pub_key):
 
     return enc_keys
 
-
 def dec_tdes_keys(enc_keys, priv_key):
     dec_keys = []
     for enc_key in enc_keys:
         dec_keys.append(rsa.rsa_dec(enc_key, priv_key))
 
     return dec_keys
-
 
 def prg():
     rsa_keys = []
@@ -38,14 +35,11 @@ def prg():
             if (len(msg) == 0):
                 return
 
-            p_enc_msg_and_tdes_key = tdes.tdes_enc(
-                msg, tdes_keys[i]), enc_tdes_keys(tdes_keys[i], rsa_keys[(i + 1) % 2][0])
+            cypher, keys = tdes.tdes_enc(msg, tdes_keys[i]), enc_tdes_keys(tdes_keys[i], rsa_keys[(i + 1) % 2][0])
 
             # Passage à l'autre utilisateur
-            dec_msg = tdes.tdes_dec(p_enc_msg_and_tdes_key[0], dec_tdes_keys(
-                p_enc_msg_and_tdes_key[1], rsa_keys[(i + 1) % 2][1]))
+            dec_msg = tdes.tdes_dec(cypher, dec_tdes_keys(keys, rsa_keys[(i + 1) % 2][1]))
 
             print(names[i] + ": " + dec_msg)
-
 
 prg()
